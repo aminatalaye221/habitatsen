@@ -1,6 +1,6 @@
 # HabitatSen
 
-Application mobile/web de catalogue et vente de plans de construction modernes adaptés au Sénégal.
+Application mobile/web de catalogue et vente de plans de construction modernes adaptï¿½s au Sï¿½nï¿½gal.
 
 ## Structure
 
@@ -12,27 +12,57 @@ Application mobile/web de catalogue et vente de plans de construction modernes a
 ### Backend
 
 1. Aller dans `backend/`
-2. Créer un environnement virtuel : `python -m venv venv`
+2. Crï¿½er un environnement virtuel : `python -m venv venv`
 3. Activer l'environnement :
    - Windows : `venv\Scripts\activate`
-4. Installer les dépendances : `pip install -r requirements.txt`
+4. Installer les dï¿½pendances : `pip install -r requirements.txt`
 5. Lancer les migrations : `python manage.py migrate`
-6. Démarrer le serveur : `python manage.py runserver`
+6. Dï¿½marrer le serveur : `python manage.py runserver`
 
-### Charger des plans de démonstration
+### Charger des plans de dï¿½monstration
 
 1. Aller dans `backend/`
-2. Exécuter : `python manage.py loaddata sample_plans`
+2. Exï¿½cuter : `python manage.py loaddata sample_plans`
 
 ### Frontend
 
 1. Aller dans `frontend/`
-2. Installer les dépendances : `npm install`
-3. Démarrer l'application : `npm run dev`
+2. Installer les dï¿½pendances : `npm install`
+3. Dï¿½marrer l'application : `npm run dev`
 
 ## API principales
 
 - `GET /api/plans/` : liste des plans
 - `POST /api/contact/` : soumission d'un formulaire de contact/WhatsApp
 - `POST /api/submission/` : soumission d'un plan personnel
-- `POST /api/custom-plan/` : soumission d'une demande de plan personnalisé / génération de message WhatsApp
+- `POST /api/custom-plan/` : soumission d'une demande de plan personnalisÃ© / gÃ©nÃ©ration de message WhatsApp
+
+## DÃ©ploiement
+
+### Backend sur Render
+
+1. CrÃ©e un nouveau service Web sur Render en liant le dÃ©pÃ´t `habitatsen`.
+2. Dans la configuration du service :
+   - Build Command : `pip install -r backend/requirements.txt`
+   - Start Command : `gunicorn habitat.wsgi --chdir backend --log-file -`
+3. Ajoute les variables d'environnement :
+   - `DJANGO_SECRET_KEY` : clÃ© secrÃ¨te production
+   - `DJANGO_DEBUG` : `False`
+   - `DJANGO_ALLOWED_HOSTS` : domaine Render (Ex: `habitatsen.onrender.com`)
+   - `DATABASE_URL` : URL PostgreSQL fournie par Render si tu utilises une base de donnÃ©es persistante.
+
+### Frontend sur Vercel
+
+1. CrÃ©e un nouveau projet Vercel et connecte-le Ã  ce dÃ©pÃ´t.
+2. Configure le chemin `frontend/` comme rÃ©pertoire du projet.
+3. Build Command : `npm install && npm run build`
+4. Output Directory : `dist`
+5. Ajoute la variable d'environnement :
+   - `VITE_API_BASE_URL` : `https://<ton-backend>.onrender.com/api`
+
+### DÃ©ploiement local
+
+- Backend : `cd backend && python manage.py migrate && python manage.py runserver`
+- Frontend : `cd frontend && npm install && npm run dev`
+
+> Sur Vercel, le frontend appellera ton backend via `VITE_API_BASE_URL`. Sur Render, le backend utilisera `DJANGO_ALLOWED_HOSTS` et `DATABASE_URL`.
