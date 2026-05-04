@@ -1,0 +1,58 @@
+[
+  {
+    "model": "plans.plan",
+    "pk": 1,
+    "fields": {
+      "title": "Maison familiale moderne",
+      "description": "Plan architecte réaliste pour maison 3 chambres, salon ouvert, cuisine fonctionnelle et terrasse ombragée, basé sur une étude de marché sénégalaise.",
+      "category": "maison",
+      "surface": "120 m²",
+      "rooms": 3,
+      "price": "6800000.00",
+      "image_url": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
+      "is_active": true
+    }
+  },
+  {
+    "model": "plans.plan",
+    "pk": 2,
+    "fields": {
+      "title": "Immeuble résidentiel économique",
+      "description": "Bloc de 4 logements optimisé pour le marché sénégalais, conçu pour parcelles étroites et rendement locatif.",
+      "category": "immeuble",
+      "surface": "280 m²",
+      "rooms": 8,
+      "price": "12600000.00",
+      "image_url": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80",
+      "is_active": true
+    }
+  },
+  {
+    "model": "plans.plan",
+    "pk": 3,
+    "fields": {
+      "title": "Boutique de proximité moderne",
+      "description": "Plan de commerce de quartier étudié pour le marché local, avec vitrine, espace caisse et stockage pratique.",
+      "category": "commerce",
+      "surface": "75 m²",
+      "rooms": 1,
+      "price": "3900000.00",
+      "image_url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+      "is_active": true
+    }
+  },
+  {
+    "model": "plans.plan",
+    "pk": 4,
+    "fields": {
+      "title": "Villa moderne confort",
+      "description": "Villa moderne de 4 chambres, séjour lumineux et espace extérieur, pensée pour le marché sénégalais et les matériaux locaux.",
+      "category": "maison",
+      "surface": "260 m²",
+      "rooms": 4,
+      "price": "14800000.00",
+      "image_url": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
+      "is_active": true
+    }
+  }
+]
