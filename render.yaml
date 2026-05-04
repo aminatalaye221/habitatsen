@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: habitatsen-backend
+    env: python
+    region: oregon
+    plan: starter
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn habitat.wsgi --chdir backend --log-file -
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: "your-secret-key"
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "habitatsen.onrender.com"
+      - key: DATABASE_URL
+        value: "postgres://user:password@hostname:5432/dbname"

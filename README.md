@@ -60,9 +60,20 @@ Application mobile/web de catalogue et vente de plans de construction modernes a
 5. Ajoute la variable d'environnement :
    - `VITE_API_BASE_URL` : `https://<ton-backend>.onrender.com/api`
 
+### Fichiers d'exemple d'environnement
+
+- `backend/.env.example` : exemple de variables pour le backend.
+- `frontend/.env.example` : exemple de variable pour le frontend.
+
 ### Déploiement local
 
-- Backend : `cd backend && python manage.py migrate && python manage.py runserver`
+- Backend : `cd backend && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver`
 - Frontend : `cd frontend && npm install && npm run dev`
+
+### Fichiers de déploiement
+
+- `Procfile` : pour Render, démarre le backend avec Gunicorn.
+- `render.yaml` : configuration de service Render pour le backend.
+- `frontend/vercel.json` : configuration Vercel pour le frontend.
 
 > Sur Vercel, le frontend appellera ton backend via `VITE_API_BASE_URL`. Sur Render, le backend utilisera `DJANGO_ALLOWED_HOSTS` et `DATABASE_URL`.
